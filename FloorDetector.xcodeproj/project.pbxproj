@@ -12,6 +12,8 @@
 		F9CF964022BCC05700FD1E4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9CF963E22BCC05700FD1E4C /* Main.storyboard */; };
 		F9CF964222BCC05900FD1E4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9CF964122BCC05900FD1E4C /* Assets.xcassets */; };
 		F9CF964522BCC05900FD1E4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9CF964322BCC05900FD1E4C /* LaunchScreen.storyboard */; };
+		F9CF964D22BCC18100FD1E4C /* FloorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CF964C22BCC18100FD1E4C /* FloorManager.swift */; };
+		F9CF964F22BCD74000FD1E4C /* CoreMotion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CF964E22BCD74000FD1E4C /* CoreMotion+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,10 @@
 		F9CF964122BCC05900FD1E4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9CF964422BCC05900FD1E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9CF964622BCC05900FD1E4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9CF964C22BCC18100FD1E4C /* FloorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorManager.swift; sourceTree = "<group>"; };
+		F9CF964E22BCD74000FD1E4C /* CoreMotion+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreMotion+Extensions.swift"; sourceTree = "<group>"; };
+		F9CF965022BCFB0D00FD1E4C /* configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = configuration.xcconfig; sourceTree = "<group>"; };
+		F9CF965222BCFBC100FD1E4C /* secret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = secret.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +60,16 @@
 		F9CF963922BCC05700FD1E4C /* FloorDetector */ = {
 			isa = PBXGroup;
 			children = (
+				F9CF964C22BCC18100FD1E4C /* FloorManager.swift */,
+				F9CF964E22BCD74000FD1E4C /* CoreMotion+Extensions.swift */,
 				F9CF963A22BCC05700FD1E4C /* AppDelegate.swift */,
 				F9CF963C22BCC05700FD1E4C /* ViewController.swift */,
 				F9CF963E22BCC05700FD1E4C /* Main.storyboard */,
 				F9CF964122BCC05900FD1E4C /* Assets.xcassets */,
 				F9CF964322BCC05900FD1E4C /* LaunchScreen.storyboard */,
 				F9CF964622BCC05900FD1E4C /* Info.plist */,
+				F9CF965022BCFB0D00FD1E4C /* configuration.xcconfig */,
+				F9CF965222BCFBC100FD1E4C /* secret.xcconfig */,
 			);
 			path = FloorDetector;
 			sourceTree = "<group>";
@@ -135,7 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9CF964F22BCD74000FD1E4C /* CoreMotion+Extensions.swift in Sources */,
 				F9CF963D22BCC05700FD1E4C /* ViewController.swift in Sources */,
+				F9CF964D22BCC18100FD1E4C /* FloorManager.swift in Sources */,
 				F9CF963B22BCC05700FD1E4C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +176,7 @@
 /* Begin XCBuildConfiguration section */
 		F9CF964722BCC05900FD1E4C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9CF965022BCFB0D00FD1E4C /* configuration.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -225,6 +238,7 @@
 		};
 		F9CF964822BCC05900FD1E4C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9CF965022BCFB0D00FD1E4C /* configuration.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -280,6 +294,7 @@
 		};
 		F9CF964A22BCC05900FD1E4C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9CF965022BCFB0D00FD1E4C /* configuration.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +313,7 @@
 		};
 		F9CF964B22BCC05900FD1E4C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9CF965022BCFB0D00FD1E4C /* configuration.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

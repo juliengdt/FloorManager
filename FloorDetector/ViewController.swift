@@ -47,9 +47,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var headingLabel: UILabel!
     // Activity IBOutlets
-    @IBOutlet weak var activityImageView: UIImageView!
     @IBOutlet weak var activityLabel: UILabel!
     
+    @IBOutlet weak var pedometerLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -75,6 +75,8 @@ extension ViewController: FloorManagerDelegate {
             self.updateUIWithActivity(data)
         case .motion(let data):
             self.updateUIWithMotion(data)
+        case .pedometer(let data):
+            self.updateUIWithPedometer(data)
         }
     }
     
@@ -88,9 +90,9 @@ private extension ViewController {
     
     func updateUIWithAcceleration(_ data: CMAcceleration) {
         DispatchQueue.main.async { [weak self] in
-            self?.accelerationXLabel.text = "\(data.x)"
-            self?.accelerationYLabel.text = "\(data.y)"
-            self?.accelerationZLabel.text = "\(data.z)"
+            self?.accelerationXLabel.text = "\((data.x * 1000).rounded() / 1000)"
+            self?.accelerationYLabel.text = "\((data.y * 1000).rounded() / 1000)"
+            self?.accelerationZLabel.text = "\((data.z * 1000).rounded() / 1000)"
 
         }
 
@@ -183,22 +185,17 @@ private extension ViewController {
     
     func updateUIWithActivity(_ data: CMMotionActivity) {
 
-        let activityImageName = data.activityImageName
         DispatchQueue.main.async { [weak self] in
-            self?.activityImageView.image = UIImage(named: activityImageName)
-            switch data.confidence {
-            case .low:
-                self?.activityImageView.tintColor = UIColor.red
-            case .medium:
-                self?.activityImageView.tintColor = UIColor.orange
-            case .high:
-                self?.activityImageView.tintColor = UIColor.green
-            @unknown default:
-                return
-            }
             self?.activityLabel.text = data.debugDescription
         }
         
+    }
+    
+    func updateUIWithPedometer(_ data: CMPedometerData) {
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.pedometerLabel.text = data.debugDescription
+        }
         
     }
     

@@ -35,15 +35,16 @@ extension CMMotionActivity {
     }
     
     open override var debugDescription: String {
+        var confidenceString: String = ""
         var modes: Array<String> = []
         
         switch confidence {
         case .low:
-            modes.append("🙁\n")
+            confidenceString = "🙁\n"
         case .medium:
-            modes.append("😐\n")
+            confidenceString = "😐\n"
         case .high:
-            modes.append("🙂\n")
+            confidenceString = "🙂\n"
         @unknown default:
             print("unknown use case")
         }
@@ -72,7 +73,7 @@ extension CMMotionActivity {
             modes.append("🚗")
         }
         
-        return modes.joined(separator: ", ")
+        return confidenceString + modes.joined(separator: "- ")
     }
 
 }
@@ -89,5 +90,41 @@ extension CMMotionActivityConfidence: CustomDebugStringConvertible {
         @unknown default:
             fatalError()
         }
+    }
+}
+
+
+extension CMPedometerData {
+
+     open override var debugDescription: String {
+        
+        var descriptions: Array<String> = []
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        descriptions.append("From: \(formatter.string(from: self.startDate))")
+        descriptions.append("To: \(formatter.string(from: self.endDate))")
+
+        descriptions.append("Step(s): \(self.numberOfSteps.intValue)")
+        
+        var stairs = "Stair(s): "
+        
+        if let down = self.floorsDescended {
+            stairs.append("\(down.intValue) ↘️")
+        }else {
+            stairs.append("-- ↘️")
+        }
+        stairs.append(" | ")
+        if let up = self.floorsAscended {
+            stairs.append("\(up.intValue) ↗️")
+        }else {
+            stairs.append("-- ↗️")
+        }
+        
+        descriptions.append(stairs)
+        
+        return descriptions.joined(separator: "\n")
+        
+        
     }
 }

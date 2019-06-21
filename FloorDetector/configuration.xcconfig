@@ -9,8 +9,8 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-PRODUCT_BUNDLE_IDENTIFIER = com.example.name
-DEVELOPMENT_TEAM = ABCDEF
-CODE_SIGN_STYLE = Automatic
+BUNDLE_ID = com.example.name
+TEAM_ID = ABCDEF
+CODE_SIGNING = Automatic
 
 #include? "secret.xcconfig"

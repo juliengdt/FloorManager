@@ -27,7 +27,7 @@
 		F9CF964C22BCC18100FD1E4C /* FloorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorManager.swift; sourceTree = "<group>"; };
 		F9CF964E22BCD74000FD1E4C /* CoreMotion+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreMotion+Extensions.swift"; sourceTree = "<group>"; };
 		F9CF965022BCFB0D00FD1E4C /* configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = configuration.xcconfig; sourceTree = "<group>"; };
-		F9CF965222BCFBC100FD1E4C /* secret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = secret.xcconfig; sourceTree = "<group>"; };
+		F9CF965322BD08F200FD1E4C /* secret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = secret.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 				F9CF964322BCC05900FD1E4C /* LaunchScreen.storyboard */,
 				F9CF964622BCC05900FD1E4C /* Info.plist */,
 				F9CF965022BCFB0D00FD1E4C /* configuration.xcconfig */,
-				F9CF965222BCFBC100FD1E4C /* secret.xcconfig */,
+				F9CF965322BD08F200FD1E4C /* secret.xcconfig */,
 			);
 			path = FloorDetector;
 			sourceTree = "<group>";
@@ -210,6 +210,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "$(TEAM_ID)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -272,6 +273,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "$(TEAM_ID)";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

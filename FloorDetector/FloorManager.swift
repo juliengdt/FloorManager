@@ -116,12 +116,14 @@ enum FloorEvent {
     case motion(data: CMDeviceMotion)
     case acceleration(data: CMAcceleration)
     case activity(data: CMMotionActivity)
+    case pedometer(data: CMPedometerData)
 }
 
 enum FloorError: Error {
     case noMotion
     case noAcceleration
     case noActivity
+    case noPedometer
     
     var localizedDescription: String {
         switch self {
@@ -131,6 +133,8 @@ enum FloorError: Error {
             return "No acceleration data given by Apple CoreMotion framework"
         case .noActivity:
             return "No motion activity given by Apple CoreMotion framework"
+        case .noPedometer:
+            return "No pedometer data given by Apple CoreMotion framework"
         }
     }
     
@@ -152,6 +156,7 @@ class FloorManager {
     private let coremotionActivity: CMMotionActivityManager
     
     private var lastPedometerEvent: CMPedometerEvent?
+    private var lastPedometerDataTimestamp: Date?
     
     private weak var delegate: FloorManagerDelegate?
     
@@ -232,15 +237,33 @@ class FloorManager {
             
         }
         
-        coremotionPedometer.startUpdates(from: Date().addingTimeInterval(-120)) { [weak self] (pedometer, error) in
+        coremotionPedometer.startUpdates(from: Date()) { [weak self] (pedometer, error) in
             
-            guard let _pedometer = pedometer else { return }
+            if let _err = error {
+                self?.delegate?.didReceiveFloorError(_err)
+                return
+            }
+            
+            guard let _pedometer = pedometer else {
+                self?.delegate?.didReceiveFloorError(FloorError.noPedometer)
+                return
+            }
             
             
-        
-            
-            
-            
+//            if let lastDate = self?.lastPedometerDataTimestamp {
+//
+//                self?.coremotionPedometer.queryPedometerData(from: lastDate, to: Date(), withHandler: { (data, err) in
+//                    if let _data = data {
+//                        self?.delegate?.didReceiveNewFloorEvent(FloorEvent.pedometer(data: _data))
+//                    }
+//                })
+//
+//            } else {
+                self?.delegate?.didReceiveNewFloorEvent(FloorEvent.pedometer(data: _pedometer))
+//            }
+            self?.lastPedometerDataTimestamp = _pedometer.endDate
+
+
         }
         
         
